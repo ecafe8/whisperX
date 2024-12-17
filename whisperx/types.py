@@ -1,4 +1,10 @@
-from typing import TypedDict, Optional, List
+# fix pydantic.errors.PydanticUserError:
+# Please use `typing_extensions.TypedDict` instead of `typing.TypedDict` on Python < 3.12.
+try:
+    from typing_extensions import TypedDict
+except ImportError:
+    from typing import TypedDict
+from typing import Optional, List
 
 
 class SingleWordSegment(TypedDict):
@@ -9,6 +15,7 @@ class SingleWordSegment(TypedDict):
     start: float
     end: float
     score: float
+
 
 class SingleCharSegment(TypedDict):
     """
